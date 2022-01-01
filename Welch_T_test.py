@@ -77,9 +77,15 @@ def Welch_T_test():
 
             # print results
             print(message)
-            print(tabulate([["Mean diff", mean_diff], ["t", tval], ["Std Error", se], ["df", dfr], ["rounded df", rounded_dfr],
-                                     ["P-value (one-tail)", oneside_pval], ["P-value (two-tail)", twoside_pval],
-                                     ["Lower "+str(ci)+"%", diffci_low], ["Upper "+str(ci)+"%", diffci_up]]) + '\n')
+            print(tabulate([["Mean diff", mean_diff], 
+                            ["t", tval], 
+                            ["Std Error", se], 
+                            ["df", dfr], 
+                            ["rounded df", rounded_dfr],
+                            ["P-value (one-tail)", oneside_pval], 
+                            ["P-value (two-tail)", twoside_pval], 
+                            ["Lower "+str(ci)+"%", diffci_low], 
+                            ["Upper "+str(ci)+"%", diffci_up]]) + '\n')
                 
             print('Parameter estimates\n\n' + tabulate([[levels[0], count[0], mean[0], sd[0], sem[0], varci_low[0],
                                       varci_up[0]], [levels[1], count[1], mean[1], sd[1], sem[1],
@@ -109,21 +115,23 @@ def Welch_T_test():
                         1.661, 1.661, 1.661, 1.660, 1.660]
 
             crit_val = (df5_1_to_100[int(dfr) - 1]) * (-1)
-            print("Critical Value: ", crit_val)
 
             '\n'
 
             if tval < crit_val:
-                print("Result: ", tval, "<", crit_val)
-                print("")
-                print("Null Hypothesis: Accepted")
-                print("Regular cardboard is better than Pa-Bi-Board.")
+                lose = tval, "<", crit_val
+                print(tabulate([["Critical Value", crit_val], 
+                                ["Results", lose], 
+                                ["Null Hypothesis", "Accepted"], 
+                                ["Alternative Hypothesis", "Rejected"], 
+                                ["Verdict", "Regular cardboard is better than Pa-Bi-Board."]]))
 
             else:
-                print("Result: ", tval, ">=", crit_val)
-                print("")
-                print("Null Hypothesis: Rejected")
-                print("Alternatibe Hypothesis: Accepted")
-                print("Pa-Bi-Board is equal or better than regular cardboard.")
+                win = tval, ">=", crit_val
+                print(tabulate([["Critical Value", crit_val], 
+                                ["Results", win], 
+                                ["Null Hypothesis", "Rejected"], 
+                                ["Alternative Hypothesis", "Accepted"], 
+                                ["Verdict", "Pa-Bi-Board is better or equal to regular cardboard."]]))
 
 Welch_T_test()
