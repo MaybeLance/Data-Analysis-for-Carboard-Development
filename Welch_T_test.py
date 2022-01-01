@@ -31,9 +31,6 @@ def Welch_T_test():
             levels = df[xfac].unique()
             levels.sort()
             
-            if len(levels) != 2:
-                raise Exception("there must be only two levels")
-            
             a_val = df.loc[df[xfac] == levels[0], res].to_numpy()
             b_val = df.loc[df[xfac] == levels[1], res].to_numpy()
             a_count, b_count = len(a_val), len(b_val)
