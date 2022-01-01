@@ -4,7 +4,7 @@ This repository consists of two files:
 - One file is a python file containing the program that will analyze the data.
 - The other is a CSV file containing the sample data that will be processed.
 
-The file:
+The repository:
 - It contains the sample data.
 - It needs to be downloaded.
 - Please copy the Path of the downloaded CSV file.
