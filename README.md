@@ -1,4 +1,4 @@
-# Data-Analysis-for-Cardboards
+# Data-Analysis-for-Cardboard-Development
 
 This repository consists of two files: 
 - One file is a python file containing the program that will analyze the data.
@@ -19,5 +19,6 @@ The program:
 Updates:
 - The program now currently runs not more than 1.9 seconds in my computer.
 - In the past it has been known to run more than 60 seconds but not more than 80 seconds.
+- As of January 29: New statistical tests have been included.
 
 Note: I am open for any changes and suggestions. Questions regarding the program are very welcome.
