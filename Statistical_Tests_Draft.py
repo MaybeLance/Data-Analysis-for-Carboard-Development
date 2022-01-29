@@ -208,7 +208,7 @@ def Mann_Whitney_Test():
     message = "Wilcoxon-Mann-Whitney U Test"
     mw_stats, mw_one_p_val = stats.mannwhitneyu(a_val, 
                                                 b_val, 
-                                                alternative = 'greater')
+                                                alternative = 'less')
     
     # Get two-tailed p-value
     mw_two_p_val = mw_one_p_val * 2
@@ -225,7 +225,11 @@ def Mann_Whitney_Test():
 # Non-Parametric Route AND Heteroscedasticity
 def Brunner_Munzel_Test():
     message = "Brunner-Munzel Test"
-    bm_stats, bm_one_p_val = stats.brunnermunzel(a_val, b_val, alternative = 'greater')
+    bm_stats, bm_one_p_val = stats.brunnermunzel(a_val, 
+						 b_val, 
+						 alternative = 'less')
+    
+    # Get two-tailed p-value
     bm_two_p_val = bm_one_p_val * 2
     
     # print results
