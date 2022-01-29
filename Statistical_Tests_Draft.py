@@ -238,17 +238,20 @@ def Brunner_Munzel_Test():
 
 
 # Determining Stats Code Block
-if sw_bool_result == True and leve_bool_result == True:
-    print(Student_T_test())
+def statistics_choosing():
+    if sw_bool_result == True and leve_bool_result == True:
+        return Student_T_test()
 
-elif sw_bool_result == True and leve_bool_result == False:
-    print(Welch_T_test())
+    elif sw_bool_result == True and leve_bool_result == False:
+        return Welch_T_test()
 
-elif sw_bool_result == False and leve_bool_result == True:
-    print(Mann_Whitney_Test())
+    elif sw_bool_result == False and leve_bool_result == True:
+        return Mann_Whitney_Test()
 
-elif sw_bool_result == False and leve_bool_result == False:
-    print(Brunner_Munzel_Test())
+    elif sw_bool_result == False and leve_bool_result == False:
+        return Brunner_Munzel_Test()
+
+statistics_choosing()
 
 
 
