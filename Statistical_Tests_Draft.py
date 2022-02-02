@@ -150,8 +150,9 @@ def Student_T_test():
     dfr = dfa + dfb
 
     tval = np.divide(mean_diff, se)
-    oneside_pval = stats.t.sf(np.abs(tval), dfr)
-    twoside_pval = oneside_pval * 2
+    trash_1, oneside_pval = stats.ttest_ind(a_val, b_val, alternative = 'less')
+    trash_2, twoside_pval = stats.ttest_ind(a_val, b_val, alternative = 'two-sided')
+
     # 95% CI for diff
     tcritdiff = stats.t.ppf((1 + (1-alpha)) / 2, dfr)
     diffci_low = mean_diff - (tcritdiff * se)
