@@ -21,5 +21,6 @@ Updates:
 - In the past it has been known to run more than 60 seconds but not more than 80 seconds.
 - As of January 29: New statistical tests have been included.
 - As of January 30: New sample data have been included.
+- As of Febuary 2: Edited Student T-Test to fix for incorrect p-value and edited sample data.
 
 Note: I am open for any changes and suggestions. Questions regarding the program are very welcome.
