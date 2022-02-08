@@ -6,17 +6,18 @@ from tabulate import tabulate
 
 print("")
 
-# File input (Need editing) [DOUBLE SLAHES '\\' FOR LOCAL FILES TO AVOUD UNICODE ESCAPE ERRORS]
-csv_file = "C:\\Users\\rlu\\Documents\\Collected Data\\genotype.csv"
+# File input (Need editing) 
+# [DOUBLE SLAHES '\\' FOR LOCAL FILES (not URLs) TO AVOUD UNICODE ESCAPE ERRORS]
+csv_file = "https://raw.githubusercontent.com/MaybeLance/Data-Analysis-for-Cardboard-Development/main/Sample%20Data/Germination%20Sample%20Data.csv"
 data = pd.read_csv(csv_file)
 
 # Basic Parameter Input (Need editing)
 df = data 
 xfac = "Samples"
-res = "C. Angles"
+res = "Seeds"
 alpha = 0.05
 
-# Warning for Monke
+# Warnings due to wrong inputs
 df = data.dropna()
 if df.shape[0] < 2:
     raise Exception("Very few observations to run t-test")
@@ -150,8 +151,8 @@ def Student_T_test():
     dfr = dfa + dfb
 
     tval = np.divide(mean_diff, se)
-    oneside_pval = stats.t.sf(np.abs(tval), dfr)
-    twoside_pval = oneside_pval * 2
+    trash_1, oneside_pval = stats.ttest_ind(a_val, b_val, alternative = 'less')
+    trash_2, twoside_pval = stats.ttest_ind(a_val, b_val, alternative = 'two-sided')
     # 95% CI for diff
     tcritdiff = stats.t.ppf((1 + (1-alpha)) / 2, dfr)
     diffci_low = mean_diff - (tcritdiff * se)
@@ -206,12 +207,12 @@ def Welch_T_test():
 # Non-Parametric Route AND Homoscedasticity
 def Mann_Whitney_Test():
     message = "Wilcoxon-Mann-Whitney U Test"
-    mw_stats, mw_one_p_val = stats.mannwhitneyu(a_val, 
-                                                b_val, 
+    mw_stats, mw_one_p_val = stats.mannwhitneyu(a_val, b_val, 
                                                 alternative = 'less')
     
     # Get two-tailed p-value
-    mw_two_p_val = mw_one_p_val * 2
+    trash, mw_two_p_val = stats.mannwhitneyu(a_val, b_val,
+                                                alternative = 'two-sided')
 
     # print results
     print(message)
@@ -225,12 +226,11 @@ def Mann_Whitney_Test():
 # Non-Parametric Route AND Heteroscedasticity
 def Brunner_Munzel_Test():
     message = "Brunner-Munzel Test"
-    bm_stats, bm_one_p_val = stats.brunnermunzel(a_val, 
-						 b_val, 
-						 alternative = 'less')
-    
-    # Get two-tailed p-value
-    bm_two_p_val = bm_one_p_val * 2
+    bm_stats, bm_one_p_val = stats.brunnermunzel(a_val, b_val, 
+                                                alternative = 'less')
+
+    trash, bm_two_p_val = stats.brunnermunzel(a_val, b_val, 
+                                                alternative = 'two-sided')
     
     # print results
     print(message)
