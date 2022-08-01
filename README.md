@@ -23,5 +23,6 @@ Updates:
 - As of Febuary 2: Edited Student T-Test to fix for incorrect p-value and edited sample data. 
   Cannot be anymore runned in the Google Colaboratory due to argument error by the cloud service.
 - As of February 8: Changes in two-tailed p-value.
+- As of August 1: Added visual histogram results for both groups.
 
 Note: I am open for any changes and suggestions. Questions regarding the program are very welcome.
