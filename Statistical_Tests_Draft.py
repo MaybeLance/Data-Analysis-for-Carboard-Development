@@ -2,6 +2,7 @@
 import pandas as pd
 import scipy.stats as stats
 import numpy as np
+import matplotlib.pyplot as plt
 from tabulate import tabulate
 
 print("")
@@ -258,6 +259,19 @@ def statistics_choosing():
 
 statistics_choosing()
 
+# Histograms of Raw Data
+x = [a_val, b_val]
+num_bins = 5
+
+# Function and Result A
+n, bins, patches = plt.hist(x[0], num_bins, facecolor='blue', alpha=0.5)
+print("Histogram of Group A")
+plt.show()
+
+# Function and Result B
+n, bins, patches = plt.hist(x[1], num_bins, facecolor='green', alpha=0.5)
+print("Histogram of Group B")
+plt.show()
 
 
 print("------------------ End of Data Analysis ------------------")
